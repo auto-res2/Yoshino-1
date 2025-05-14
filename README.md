@@ -1,1 +1,1 @@
-# Yoshino-1
+# gpu-repository
