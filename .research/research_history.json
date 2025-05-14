@@ -21,5 +21,42 @@
     "experimental_setup": "Experiments were conducted on various datasets: conditional 2D Gaussian distributions, a mixture of Gaussian distributions, CIFAR-10, ImageNet 256, and Stable Diffusion. The method was evaluated using metrics like Kullback–Leibler (KL) divergence, Frechet Inception Distance (FID), Inception Score (IS), and visual inspection. It was also tested on simulating magnet phase transitions using the Landau-Ginzburg model.",
     "limitations": "The effectiveness of FID as an evaluation metric is compromised by the difference between the target conditional probabilities and marginal probabilities. The iterative computation of the non-linear correction can be slow, and advanced regularization techniques are needed to enhance the convergence rate and accelerate computation.",
     "future_research_directions": "Future research directions include exploring advanced regularization techniques beyond projection to improve the convergence rate of the iterative correction. There is also a need for more appropriate metrics that account for the discrepancy between the target conditional probabilities and marginal probabilities in guided DDPMs."
-  }
+  },
+  "add_queries": [
+    "vision"
+  ],
+  "generated_queries": [
+    "nonlinear guidance",
+    "diffusion models",
+    "fokker planck",
+    "fixed point",
+    "harmonic ansatz"
+  ],
+  "add_github_urls": [
+    "https://github.com/mingyuanzhou/SiD"
+  ],
+  "add_method_texts": [
+    {
+      "arxiv_id": "2404.04057v3",
+      "arxiv_url": "http://arxiv.org/abs/2404.04057v3",
+      "title": "Score identity Distillation: Exponentially Fast Distillation of\n  Pretrained Diffusion Models for One-Step Generation",
+      "authors": [
+        "Mingyuan Zhou",
+        "Huangjie Zheng",
+        "Zhendong Wang",
+        "Mingzhang Yin",
+        "Hai Huang"
+      ],
+      "published_date": "2024-04-05T12:30:19Z",
+      "journal": "",
+      "doi": "",
+      "summary": "We introduce Score identity Distillation (SiD), an innovative data-free\nmethod that distills the generative capabilities of pretrained diffusion models\ninto a single-step generator. SiD not only facilitates an exponentially fast\nreduction in Fr\\'echet inception distance (FID) during distillation but also\napproaches or even exceeds the FID performance of the original teacher\ndiffusion models. By reformulating forward diffusion processes as semi-implicit\ndistributions, we leverage three score-related identities to create an\ninnovative loss mechanism. This mechanism achieves rapid FID reduction by\ntraining the generator using its own synthesized images, eliminating the need\nfor real data or reverse-diffusion-based generation, all accomplished within\nsignificantly shortened generation time. Upon evaluation across four benchmark\ndatasets, the SiD algorithm demonstrates high iteration efficiency during\ndistillation and surpasses competing distillation approaches, whether they are\none-step or few-step, data-free, or dependent on training data, in terms of\ngeneration quality. This achievement not only redefines the benchmarks for\nefficiency and effectiveness in diffusion distillation but also in the broader\nfield of diffusion-based generation. The PyTorch implementation is available at\nhttps://github.com/mingyuanzhou/SiD",
+      "github_url": "https://github.com/mingyuanzhou/SiD",
+      "main_contributions": "The paper introduces Score identity Distillation (SiD), a data-free method for distilling pretrained diffusion models into a single-step generator. SiD achieves rapid reduction in Fréchet Inception Distance (FID) and can surpass the FID performance of the original teacher diffusion models. The method reformulates forward diffusion processes as semi-implicit distributions and uses score-related identities to create a novel loss mechanism.",
+      "methodology": "SiD leverages three score-related identities derived from reformulating forward diffusion processes as semi-implicit distributions. It employs a model-based score-matching loss, specifically a variant of Fisher divergence, approximated using Monte Carlo estimation techniques. The generator is trained using its own synthesized images, eliminating the need for real data or reverse diffusion.",
+      "experimental_setup": "The method was evaluated on four benchmark datasets: CIFAR-10 32x32, ImageNet 64x64, FFHQ 64x64, and AFHQv2 64x64. VP-EDM checkpoints were used as teacher diffusion models. Performance was measured using Fréchet Inception Distance (FID) and Inception Score (IS). Precision and Recall were also considered for ImageNet 64x64.",
+      "limitations": "SiD requires managing three networks simultaneously during distillation, increasing memory demands compared to traditional diffusion model training. The method also has increased memory allocation and iteration time compared to Diff-Instruct, due to the computation of score gradients.",
+      "future_research_directions": "Future research directions include exploring the use of LoRA (Low-Rank Adaptation) to reduce the memory footprint of the generator score network and the generator. Additionally, more advanced strategies such as progressively increasing the batch size, annealing the learning rate, and implementing gradient clipping could be explored. Further investigation into reasons for divergence in ImageNet 64x64 training is also warranted."
+    }
+  ]
 }
